@@ -1,4 +1,4 @@
-import { generateImportMap } from 'payload/dist/bin/generateImportMap/index.js'
+import { generateImportMap } from 'payload'
 import payloadConfig from '../payload.config.ts'
 
 const config = await payloadConfig
