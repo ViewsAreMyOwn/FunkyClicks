@@ -3,10 +3,10 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { Pages } from './src/collections/Pages'
-import { Media } from './src/collections/Media'
-import { Users } from './src/collections/Users'
-import { Navigation } from './src/globals/Navigation'
+import { Pages } from './src/collections/Pages.js'
+import { Media } from './src/collections/Media.js'
+import { Users } from './src/collections/Users.js'
+import { Navigation } from './src/globals/Navigation.js'
 
 // Amplify Lambda doesn't inject env vars at runtime — read them from the
 // env.json file baked in by amplify.yml during the build step.
