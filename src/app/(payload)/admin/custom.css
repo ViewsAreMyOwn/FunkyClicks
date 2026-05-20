@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+/*
+  Replace Payload's neutral greyscale with a purple-tinted scale
+  matching the Funky Clicks brand palette.
+
+  In dark mode: elevation-0 (bg) = base-900, elevation-1000 (text) = base-0
+  In light mode: elevation-0 (bg) = base-0,  elevation-1000 (text) = base-1000
+  Both modes benefit from the purple tint throughout.
+*/
+:root {
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --color-base-0:    rgb(255, 255, 255);
+  --color-base-50:   rgb(249, 246, 255);
+  --color-base-100:  rgb(242, 236, 255);
+  --color-base-150:  rgb(232, 220, 253);
+  --color-base-200:  rgb(218, 200, 250);
+  --color-base-250:  rgb(200, 176, 244);
+  --color-base-300:  rgb(179, 149, 234);
+  --color-base-350:  rgb(154, 120, 220);
+  --color-base-400:  rgb(126, 89, 202);
+  --color-base-450:  rgb(99, 60, 180);
+  --color-base-500:  rgb(75, 38, 156);
+  --color-base-550:  rgb(55, 22, 128);
+  --color-base-600:  rgb(40, 12, 104);
+  --color-base-650:  rgb(29, 7, 82);
+  --color-base-700:  rgb(22, 4, 64);
+  --color-base-750:  rgb(18, 3, 52);
+  --color-base-800:  rgb(15, 3, 42);
+  --color-base-850:  rgb(12, 2, 33);
+  --color-base-900:  rgb(9, 1, 24);
+  --color-base-950:  rgb(6, 1, 16);
+  --color-base-1000: rgb(3, 0, 10);
+}
+
+/* Pink primary / save buttons to match brand CTA */
+.btn--style-primary {
+  background-color: #f813a1;
+  border-color: #f813a1;
+  color: #ffffff;
+}
+
+.btn--style-primary:hover,
+.btn--style-primary:focus-visible {
+  background-color: #ff72c9;
+  border-color: #ff72c9;
+  color: #ffffff;
+}
+
+/* Slightly rounded inputs for a softer feel */
+.field-type input[type='text'],
+.field-type input[type='email'],
+.field-type input[type='password'],
+.field-type input[type='number'],
+.field-type textarea,
+.field-type select {
+  border-radius: 8px;
+}

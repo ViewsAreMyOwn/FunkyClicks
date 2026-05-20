@@ -37,8 +37,15 @@ const dbUri = process.env.DATABASE_URI || ''
 export default buildConfig({
   admin: {
     user: 'users',
+    theme: 'dark',
     meta: {
       titleSuffix: '— Funky Clicks Admin',
+    },
+    components: {
+      graphics: {
+        Logo: '/src/components/payload/Logo',
+        Icon: '/src/components/payload/Icon',
+      },
     },
   },
   collections: [Pages, Media, Users],
