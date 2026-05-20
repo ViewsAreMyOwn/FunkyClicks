@@ -5,7 +5,7 @@ import { BlockRenderer } from '@/components/blocks'
 
 interface PagePreviewProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  initialData: { layout?: any[] }
+  initialData: Record<string, unknown>
   serverURL: string
 }
 
