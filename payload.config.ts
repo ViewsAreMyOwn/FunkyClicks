@@ -5,6 +5,9 @@ import { Pages } from './src/collections/Pages'
 import { Media } from './src/collections/Media'
 import { Users } from './src/collections/Users'
 import { Navigation } from './src/globals/Navigation'
+const dbUri = process.env.DATABASE_URI || ''
+console.log('[Payload] DATABASE_URI set:', !!dbUri, '| starts with:', dbUri.substring(0, 20) || '(empty)')
+
 export default buildConfig({
   admin: {
     user: 'users',
@@ -18,7 +21,7 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-change-me',
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || '',
+      connectionString: dbUri,
       max: 10,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 10000,
