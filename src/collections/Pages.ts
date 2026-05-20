@@ -15,6 +15,14 @@ export const Pages: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    livePreview: {
+      url: ({ data }) => {
+        const base = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+        const slug = data?.slug as string | undefined
+        const path = !slug || slug === 'home' ? '/' : `/${slug}`
+        return `${base}${path}`
+      },
+    },
   },
   fields: [
     { name: 'title', type: 'text', required: true },
