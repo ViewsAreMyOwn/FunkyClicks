@@ -1,6 +1,6 @@
 import { getPayload } from 'payload'
 import { pushDevSchema } from '@payloadcms/drizzle'
-import config from '../payload.config.mts'
+import config from '../payload.config.ts'
 
 const payload = await getPayload({ config })
 await pushDevSchema(payload.db as Parameters<typeof pushDevSchema>[0])
