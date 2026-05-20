@@ -1,6 +1,5 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import { BlockRenderer } from '@/components/blocks'
 import { notFound } from 'next/navigation'
 import { draftMode } from 'next/headers'
 import PagePreview from './PagePreview'
@@ -37,17 +36,6 @@ export default async function CatchAllPage({ params }: PageProps) {
   const page = result.docs[0]
   if (!page) notFound()
 
-  if (isDraftMode) {
-    const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
-    return <PagePreview initialData={page} serverURL={serverURL} />
-  }
-
-  return (
-    <>
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-      {(page.layout ?? []).map((block: any, i: number) => (
-        <BlockRenderer key={i} block={block} index={i} />
-      ))}
-    </>
-  )
+  const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+  return <PagePreview initialData={page} serverURL={serverURL} />
 }
