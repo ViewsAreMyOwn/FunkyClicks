@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Check, Sparkles, Star } from 'lucide-react'
 
 interface PricingCard {
@@ -111,7 +112,7 @@ function RegularCard({ card }: { card: PricingCard }) {
           ))}
         </ul>
       )}
-      <a
+      <Link
         href="/contact"
         className={`block text-center font-extrabold py-3 px-6 rounded-full transition-all duration-300 ${
           card.featured
@@ -120,7 +121,7 @@ function RegularCard({ card }: { card: PricingCard }) {
         }`}
       >
         Get Started
-      </a>
+      </Link>
     </div>
   )
 }
@@ -163,7 +164,7 @@ function BundleCard({ card }: { card: PricingCard }) {
           ))}
         </ul>
       )}
-      <a
+      <Link
         href="/contact"
         className={`block text-center font-extrabold py-3 px-6 rounded-full transition-all duration-300 ${
           card.altStyle
@@ -172,7 +173,7 @@ function BundleCard({ card }: { card: PricingCard }) {
         }`}
       >
         Get This Bundle
-      </a>
+      </Link>
     </div>
   )
 }
@@ -226,7 +227,7 @@ function ConsultancyGrid() {
                   </li>
                 ))}
               </ul>
-              <a
+              <Link
                 href="/contact"
                 className={`block text-center font-extrabold py-3 px-6 rounded-full transition-all duration-300 ${
                   card.featured
@@ -235,7 +236,7 @@ function ConsultancyGrid() {
                 }`}
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           ))}
         </div>

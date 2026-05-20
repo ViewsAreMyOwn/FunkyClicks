@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 
 interface HeroBlockProps {
@@ -67,20 +68,20 @@ export default function HeroBlock({
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {primaryCtaLabel && (
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center bg-pink text-white font-extrabold px-8 py-4 rounded-full text-lg hover:bg-pink-light hover:-translate-y-0.5 hover:shadow-xl hover:shadow-pink/40 transition-all duration-300"
             >
               {primaryCtaLabel}
-            </a>
+            </Link>
           )}
           {secondaryCtaLabel && (
-            <a
+            <Link
               href="/services"
               className="inline-flex items-center justify-center border-2 border-white/50 text-white font-extrabold px-8 py-4 rounded-full text-lg hover:border-pink hover:text-pink transition-all duration-300"
             >
               {secondaryCtaLabel}
-            </a>
+            </Link>
           )}
         </div>
       </div>
