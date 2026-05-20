@@ -15,7 +15,7 @@ export default function PagePreview({ initialData, serverURL }: PagePreviewProps
   return (
     <>
       {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-      {(data.layout ?? []).map((block: any, i: number) => (
+      {((data.layout as any[]) ?? []).map((block: any, i: number) => (
         <BlockRenderer key={i} block={block} index={i} />
       ))}
     </>
