@@ -33,7 +33,6 @@ function loadAmplifyEnv() {
 loadAmplifyEnv()
 
 const dbUri = process.env.DATABASE_URI || ''
-console.log('[Payload] DATABASE_URI set:', !!dbUri, '| starts with:', dbUri.substring(0, 20) || '(empty)')
 
 export default buildConfig({
   admin: {
