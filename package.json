@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "payload generate:importmap && next build",
+    "build": "node --experimental-strip-types scripts/generate-importmap.mts && next build",
     "start": "next start",
     "lint": "eslint"
   },
