@@ -8,6 +8,7 @@ frontend:
       commands:
         - npm run build
         - node --experimental-strip-types scripts/push-schema.mts
+        - node --experimental-strip-types scripts/seed.mts
         - node -e "const fs=require('fs'); fs.writeFileSync('.next/env.json', JSON.stringify({DATABASE_URI:process.env.DATABASE_URI||'',PAYLOAD_SECRET:process.env.PAYLOAD_SECRET||''}))"
   artifacts:
     baseDirectory: .next
