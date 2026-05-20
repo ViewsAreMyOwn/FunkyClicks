@@ -6,6 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
+        - npx payload migrate
         - npm run build
         - node -e "const fs=require('fs'); fs.writeFileSync('.next/env.json', JSON.stringify({DATABASE_URI:process.env.DATABASE_URI||'',PAYLOAD_SECRET:process.env.PAYLOAD_SECRET||''}))"
   artifacts:
