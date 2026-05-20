@@ -28,7 +28,7 @@
         "./src/*"
       ],
       "@payload-config": [
-        "./payload.config.ts"
+        "./payload.config.mts"
       ]
     }
   },
