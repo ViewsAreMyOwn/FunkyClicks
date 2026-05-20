@@ -47,6 +47,7 @@ export default buildConfig({
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-change-me',
   db: postgresAdapter({
+    push: true,
     pool: {
       connectionString: dbUri,
       max: 10,
