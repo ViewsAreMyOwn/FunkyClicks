@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funky Clicks – Clicks That Convert, Strategies That Scale</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root {
+    --purple: #68389a;
+    --purple-dark: #4a2570;
+    --purple-light: #8a55b8;
+    --pink: #f813a1;
+    --pink-light: #ff72c9;
+    --lavender: #af6ff1;
+    --white: #ffffff;
+    --off-white: #fdf8ff;
+    --dark: #1a0a2e;
+    --text: #2d1a4a;
+    --text-muted: #6b5380;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--off-white); color: var(--text); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,10,46,0.96);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.5rem 3rem; height: 170px;
+    border-bottom: 1px solid rgba(248,19,161,0.2);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .nav-logo img { height: 160px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px;
+    transition: color 0.2s; cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--pink-light); }
+  .nav-cta {
+    background: var(--pink); color: var(--white) !important;
+    padding: 0.5rem 1.4rem; border-radius: 50px;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--pink-light) !important; transform: translateY(-1px); }
+
+  /* ── PAGES ── */
+  .page { display: none; min-height: 100vh; padding-top: 170px; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1a0a2e 0%, #2d1050 40%, #4a1878 70%, #68389a 100%);
+    min-height: calc(100vh - 170px);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; position: relative; overflow: hidden;
+    padding: 4rem 2rem;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(248,19,161,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 30%, rgba(175,111,241,0.2) 0%, transparent 50%);
+  }
+  .hero-blobs {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .blob {
+    position: absolute; border-radius: 50%;
+    background: var(--pink); opacity: 0.06;
+    animation: float 8s ease-in-out infinite;
+  }
+  .blob-1 { width: 400px; height: 400px; top: -100px; right: -100px; animation-delay: 0s; }
+  .blob-2 { width: 300px; height: 300px; bottom: -50px; left: -80px; animation-delay: 3s; }
+  .blob-3 { width: 200px; height: 200px; top: 40%; left: 10%; animation-delay: 5s; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
+
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(248,19,161,0.15);
+    border: 1px solid rgba(248,19,161,0.4);
+    color: var(--pink-light); padding: 0.4rem 1.2rem;
+    border-radius: 50px; font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
+    color: var(--white); line-height: 1.1; margin-bottom: 1rem;
+  }
+  .hero h1 em { color: var(--pink); font-style: normal; }
+  .hero-tagline {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--lavender); font-weight: 700; margin-bottom: 1.5rem;
+  }
+  .hero p {
+    font-size: 1.1rem; color: rgba(255,255,255,0.75);
+    line-height: 1.7; max-width: 600px; margin: 0 auto 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--pink); color: var(--white);
+    padding: 0.9rem 2.2rem; border-radius: 50px;
+    font-weight: 800; font-size: 1rem; cursor: pointer;
+    border: none; transition: all 0.25s; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--pink-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(248,19,161,0.4); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    padding: 0.9rem 2.2rem; border-radius: 50px;
+    font-weight: 800; font-size: 1rem; cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.4); transition: all 0.25s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-2px); }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-down { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.4); font-size: 0.8rem; text-align: center; animation: bounce 2s infinite; }
+  .scroll-arrow { font-size: 1.5rem; display: block; }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.8rem; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--pink); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
+    color: var(--purple-dark); line-height: 1.15; margin-bottom: 1rem;
+  }
+  .section-title em { color: var(--pink); font-style: normal; }
+  .section-sub { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; max-width: 620px; }
+
+  /* ── WHY US ── */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .why-card {
+    background: var(--white); border-radius: 16px; padding: 2rem;
+    border: 1px solid rgba(104,56,154,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .why-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+  }
+  .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(104,56,154,0.12); }
+  .why-icon { margin-bottom: 1rem; color: var(--purple); }
+  .why-icon svg { width: 2rem; height: 2rem; }
+  .why-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--purple-dark); margin-bottom: 0.5rem; }
+  .why-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── SERVICES OVERVIEW ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .service-card {
+    background: var(--white); border-radius: 16px; padding: 2rem;
+    border: 1px solid rgba(104,56,154,0.1); cursor: pointer;
+    transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(104,56,154,0.15); border-color: var(--purple); }
+  .service-card-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--purple), var(--purple-light));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem; color: white;
+  }
+  .service-card-icon svg { width: 1.4rem; height: 1.4rem; }
+  .service-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--purple-dark); margin-bottom: 0.5rem; }
+  .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+  .service-card .arrow { position: absolute; bottom: 1.5rem; right: 1.5rem; color: var(--pink); font-size: 1.2rem; opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+  .service-card:hover .arrow { opacity: 1; transform: translateX(3px); }
+
+  /* ── STRIP ── */
+  .strip {
+    background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+    padding: 4rem 2rem; text-align: center;
+  }
+  .strip h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 900; color: var(--white); margin-bottom: 1rem; }
+  .strip p { color: rgba(255,255,255,0.8); font-size: 1.05rem; max-width: 560px; margin: 0 auto 2rem; line-height: 1.7; }
+
+  /* ── SERVICES PAGE ── */
+  .services-header {
+    background: linear-gradient(135deg, #1a0a2e, #4a2570);
+    padding: 5rem 2rem 4rem; text-align: center;
+  }
+  .services-header h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: var(--white); margin-bottom: 1rem; }
+  .services-header p { color: rgba(255,255,255,0.75); font-size: 1.1rem; max-width: 640px; margin: 0 auto; line-height: 1.7; }
+
+  .service-block { padding: 4rem 2rem; }
+  .service-block:nth-child(even) { background: var(--white); }
+  .service-block-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; align-items: start; }
+  .service-block-inner.reverse { direction: rtl; }
+  .service-block-inner.reverse > * { direction: ltr; }
+  .service-left { }
+  .service-icon { margin-bottom: 1rem; color: var(--purple); }
+  .service-icon svg { width: 3rem; height: 3rem; }
+  .service-left h2 { font-size: 1.6rem; font-weight: 900; color: var(--purple-dark); margin-bottom: 0.75rem; line-height: 1.2; }
+  .service-left .tagline { font-size: 0.95rem; color: var(--pink); font-weight: 700; }
+  .service-bullets { list-style: none; }
+  .service-bullets li {
+    padding: 0.9rem 0; border-bottom: 1px solid rgba(104,56,154,0.08);
+    display: flex; gap: 0.75rem;
+  }
+  .service-bullets li:last-child { border-bottom: none; }
+  .service-bullets .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); flex-shrink: 0; margin-top: 6px; }
+  .service-bullets strong { font-weight: 800; color: var(--purple-dark); display: block; font-size: 0.95rem; }
+  .service-bullets span { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+  @media(max-width:768px) {
+    .service-block-inner { grid-template-columns: 1fr; }
+    .service-block-inner.reverse { direction: ltr; }
+  }
+
+  /* ── PRICING PAGE ── */
+  .pricing-header {
+    background: linear-gradient(135deg, #1a0a2e, #4a2570);
+    padding: 5rem 2rem 4rem; text-align: center;
+  }
+  .pricing-header h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: var(--white); margin-bottom: 1rem; }
+  .pricing-header p { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+  .pricing-section { padding: 4rem 2rem; }
+  .pricing-section:nth-child(even) { background: var(--white); }
+  .pricing-section-title { font-size: 1.3rem; font-weight: 900; color: var(--purple-dark); margin-bottom: 0.3rem; }
+  .pricing-section-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .price-card {
+    background: var(--white); border-radius: 16px; padding: 2rem;
+    border: 1.5px solid rgba(104,56,154,0.15);
+    position: relative; transition: all 0.25s;
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(104,56,154,0.12); }
+  .price-card.featured { border-color: var(--pink); background: linear-gradient(135deg, #fff0fb, #fff); }
+  .featured-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--pink); color: var(--white);
+    font-size: 0.75rem; font-weight: 800; padding: 0.25rem 1rem;
+    border-radius: 50px; letter-spacing: 0.5px; white-space: nowrap;
+  }
+  .price-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--purple-dark); margin-bottom: 0.25rem; }
+  .price-card .price { font-size: 2rem; font-weight: 900; color: var(--purple); margin: 0.5rem 0; }
+  .price-card .price span { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+  .price-card .desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5; }
+  .price-includes { list-style: none; }
+  .price-includes li { font-size: 0.88rem; color: var(--text); padding: 0.4rem 0; display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.4; }
+  .tick { color: var(--pink); font-weight: 900; flex-shrink: 0; }
+
+  .bundle-card {
+    background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+    border-radius: 16px; padding: 2.5rem; color: var(--white);
+    position: relative; overflow: hidden;
+  }
+  .bundle-card::before {
+    content: ''; position: absolute;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(248,19,161,0.1); top: -100px; right: -80px;
+  }
+  .bundle-card h3 { font-size: 1.4rem; font-weight: 900; margin-bottom: 0.25rem; }
+  .bundle-card .price { font-size: 2.5rem; font-weight: 900; color: var(--pink-light); }
+  .bundle-card .desc { color: rgba(255,255,255,0.8); margin: 0.5rem 0 1.5rem; line-height: 1.6; }
+  .bundle-includes { list-style: none; display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 0.5rem; }
+  .bundle-includes li { display: flex; gap: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.9); }
+
+  .consultancy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .support-card {
+    background: linear-gradient(135deg, #1a0a2e, #2d1050);
+    border-radius: 16px; padding: 2.5rem; color: var(--white);
+  }
+  .support-card h3 { font-size: 1.3rem; font-weight: 900; color: var(--pink-light); margin-bottom: 0.5rem; }
+  .support-card .rates { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+  .rate-box { background: rgba(255,255,255,0.07); border-radius: 12px; padding: 1rem 1.5rem; }
+  .rate-box .rate-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+  .rate-box .rate-price { font-size: 1.6rem; font-weight: 900; color: var(--white); }
+  .rate-box .rate-note { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+  .support-card p { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  /* ── TRAINING PAGE ── */
+  .training-header {
+    background: linear-gradient(135deg, #1a0a2e, #4a2570);
+    padding: 5rem 2rem 4rem; text-align: center;
+  }
+  .training-header h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: var(--white); margin-bottom: 0.5rem; }
+  .training-header .sub { color: var(--pink-light); font-size: 1.3rem; font-weight: 800; margin-bottom: 1rem; }
+  .training-header p { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+  .training-courses { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .course-card {
+    background: var(--white); border-radius: 16px; padding: 1.75rem;
+    border: 1px solid rgba(104,56,154,0.12);
+    transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .course-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+  }
+  .course-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(104,56,154,0.12); }
+  .course-icon { margin-bottom: 0.75rem; color: var(--purple); }
+  .course-icon svg { width: 2rem; height: 2rem; }
+  .course-card h3 { font-size: 1rem; font-weight: 800; color: var(--purple-dark); margin-bottom: 0.5rem; }
+  .course-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+  .how-it-works { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .how-item { text-align: center; padding: 2rem 1.5rem; }
+  .how-icon { margin-bottom: 1rem; color: var(--purple); }
+  .how-icon svg { width: 2.5rem; height: 2.5rem; }
+  .how-item h4 { font-size: 1rem; font-weight: 800; color: var(--purple-dark); margin-bottom: 0.5rem; }
+  .how-item p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── CONTACT PAGE ── */
+  .contact-header {
+    background: linear-gradient(135deg, #1a0a2e, #4a2570);
+    padding: 5rem 2rem 4rem; text-align: center;
+  }
+  .contact-header h1 { font-size: clamp(2rem,5vw,3.2rem); font-weight: 900; color: var(--white); margin-bottom: 1rem; }
+  .contact-header p { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; max-width: 900px; margin: 3rem auto 0; }
+  @media(max-width:700px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info h3 { font-size: 1.2rem; font-weight: 800; color: var(--purple-dark); margin-bottom: 1.5rem; }
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .contact-icon { width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, var(--purple), var(--purple-light)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; }
+  .contact-icon svg { width: 1.2rem; height: 1.2rem; }
+  .contact-item h4 { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
+  .contact-item a, .contact-item p { font-size: 0.95rem; color: var(--purple-dark); font-weight: 700; text-decoration: none; }
+  .contact-item a:hover { color: var(--pink); }
+
+  .contact-form { background: var(--white); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(104,56,154,0.1); }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--purple-dark); margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 0.75rem 1rem;
+    border: 1.5px solid rgba(104,56,154,0.2); border-radius: 10px;
+    font-family: 'Nunito', sans-serif; font-size: 0.95rem; color: var(--text);
+    background: var(--off-white); transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--purple); }
+  .form-group textarea { min-height: 120px; resize: vertical; }
+  .form-submit {
+    width: 100%; padding: 1rem; background: var(--pink); color: var(--white);
+    border: none; border-radius: 50px; font-weight: 800; font-size: 1rem;
+    cursor: pointer; font-family: 'Nunito', sans-serif; transition: all 0.25s;
+  }
+  .form-submit:hover { background: var(--pink-light); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a0a2e; color: rgba(255,255,255,0.6);
+    padding: 3rem 2rem; text-align: center;
+  }
+  .footer-logo { margin-bottom: 0.5rem; display: flex; justify-content: center; }
+  .footer-logo img { height: 120px; width: auto; }
+  .footer-tagline { color: var(--lavender); font-weight: 700; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem; cursor: pointer; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--pink-light); }
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+  @media(max-width:768px) {
+    .hamburger { display: flex; }
+    .nav-links { display: none; position: fixed; top: 170px; left: 0; right: 0; background: rgba(26,10,46,0.98); flex-direction: column; padding: 2rem; gap: 1.5rem; }
+    .nav-links.open { display: flex; }
+  }
+
+  /* ── PULSE CTA ── */
+  .cta-pulse { animation: pulse 2.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(248,19,161,0.4)} 50%{box-shadow:0 0 0 12px rgba(248,19,161,0)} }
+
+  /* stats row */
+  .stats-row { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; padding: 2.5rem; background: var(--white); border-radius: 20px; box-shadow: 0 4px 20px rgba(104,56,154,0.08); }
+  .stat { text-align: center; }
+  .stat .num { font-size: 2.2rem; font-weight: 900; color: var(--purple); }
+  .stat .num em { color: var(--pink); font-style: normal; }
+  .stat .lbl { font-size: 0.85rem; color: var(--text-muted); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    <img src="fc final transparent-02.png" alt="Funky Clicks">
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('services')">Services</a>
+    <a onclick="showPage('pricing')">Pricing</a>
+    <a onclick="showPage('training')">Training</a>
+    <a onclick="showPage('contact')" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- ════════════════ HOME ════════════════ -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">30+ Years Combined Marketing Experience</div>
+      <h1>Clicks That <em>Convert</em>,<br>Strategies That <em>Scale</em>.</h1>
+      <p class="hero-tagline">Smart Marketing. Funky Results.</p>
+      <p>We're a modern marketing consultancy built for ambitious SMEs. No fluff. No inflated agency fees. Just sharp strategy, expert execution, and marketing that delivers measurable growth.</p>
+      <div class="hero-btns">
+        <a class="btn-primary cta-pulse" onclick="showPage('contact')">Book a Free Consultation</a>
+        <a class="btn-secondary" onclick="showPage('services')">Our Services →</a>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <span class="scroll-arrow">↓</span>
+      scroll
+    </div>
+  </section>
+
+  <section style="background:var(--white); padding:4rem 2rem;">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:0.5rem;" class="section-label">Why Funky Clicks</div>
+      <h2 class="section-title" style="text-align:center; margin:0 auto 1rem;">Marketing that works.<br><em>Without the agency overhead.</em></h2>
+      <p class="section-sub" style="text-align:center; margin:0 auto 0;">We act as an extension of your team — giving you expertise exactly where and when you need it. No upselling, no fluff. Just the right strategies to get you where you need to go. And when you're ready to take the reins? We'll set you up for success and happily step back. No pressure. Just great marketing that works. <strong style="color:var(--purple-dark);">But trust us — you won't want to leave.</strong></p>
+
+      <div class="stats-row">
+        <div class="stat"><div class="num">30<em>+</em></div><div class="lbl">Years Experience</div></div>
+        <div class="stat"><div class="num"><em>100%</em></div><div class="lbl">Results-Focused</div></div>
+        <div class="stat"><div class="num">SME<em>s</em></div><div class="lbl">Our Sweet Spot</div></div>
+        <div class="stat"><div class="num">0<em>%</em></div><div class="lbl">Waffle or Fluff</div></div>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="target"></i></div>
+          <h3>Strategy-First Thinking</h3>
+          <p>Every decision starts with your business goals. We don't run campaigns for the sake of it — we build strategies that drive real, measurable outcomes.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="trending-up"></i></div>
+          <h3>Lead Gen Specialists</h3>
+          <p>Generating high-quality leads is where we shine. From funnel design to paid ads, we know what it takes to fill your pipeline with prospects who convert.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="bot"></i></div>
+          <h3>AI-Powered Marketing</h3>
+          <p>We use AI to supercharge your marketing — and we'll train your team to use it too, so when you say goodbye to us, you're prepared and ready to go.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="monitor"></i></div>
+          <h3>Websites That Sell</h3>
+          <p>We build high-performance websites designed to convert. Speed, SEO, and user experience — every element engineered to drive business results.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="zap"></i></div>
+          <h3>Flexible &amp; Scalable</h3>
+          <p>Need a sprint or a long-term partner? We scale up or down to match exactly what your business needs — without locking you into unnecessary spend.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="users"></i></div>
+          <h3>Your Extended Team</h3>
+          <p>We embed into your business, not sit on the outside. You get senior marketing expertise without the cost of a full in-house team or a bloated agency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--off-white); padding:5rem 2rem;">
+    <div class="container">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Everything your business needs<br>to <em>grow and thrive</em>.</h2>
+      <p class="section-sub">From strategy to execution, we cover the full marketing mix — bringing in the right expertise for every project.</p>
+      <div class="services-grid">
+        <div class="service-card" onclick="showPage('services')">
+          <div class="service-card-icon"><i data-lucide="bar-chart-2"></i></div>
+          <h3>Marketing Consultancy &amp; Strategy</h3>
+          <p>Audits, growth roadmaps, brand positioning, and go-to-market planning.</p>
+          <span class="arrow">→</span>
+        </div>
+        <div class="service-card" onclick="showPage('services')">
+          <div class="service-card-icon"><i data-lucide="megaphone"></i></div>
+          <h3>Social Media &amp; Paid Ads</h3>
+          <p>Organic management, paid ads across all channels, and influencer marketing.</p>
+          <span class="arrow">→</span>
+        </div>
+        <div class="service-card" onclick="showPage('services')">
+          <div class="service-card-icon"><i data-lucide="target"></i></div>
+          <h3>Sales Enablement &amp; Lead Gen</h3>
+          <p>Funnel optimisation, high-value lead campaigns, and sales &amp; marketing alignment.</p>
+          <span class="arrow">→</span>
+        </div>
+        <div class="service-card" onclick="showPage('services')">
+          <div class="service-card-icon"><i data-lucide="pen-line"></i></div>
+          <h3>Copywriting &amp; Content</h3>
+          <p>Website copy, SEO content, email sequences — words that sell.</p>
+          <span class="arrow">→</span>
+        </div>
+        <div class="service-card" onclick="showPage('services')">
+          <div class="service-card-icon"><i data-lucide="palette"></i></div>
+          <h3>Branding &amp; Design</h3>
+          <p>Logo, identity, brand guidelines, rebranding, and graphic design.</p>
+          <span class="arrow">→</span>
+        </div>
+        <div class="service-card" onclick="showPage('services')">
+          <div class="service-card-icon"><i data-lucide="monitor"></i></div>
+          <h3>Website Development</h3>
+          <p>High-performance sites built for speed, SEO, and conversions.</p>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="container">
+      <h2>Ready to make your marketing <em style="color:var(--pink-light);">actually work?</em></h2>
+      <p>Whether you need a one-off strategy session or a full-service marketing partner, we're ready to get started. No hard sell. No lock-in. Just honest, expert support.</p>
+      <a class="btn-primary" onclick="showPage('contact')">Book a Free Consultation</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="fc final transparent-02.png" alt="Funky Clicks"></div>
+    <div class="footer-tagline">Clicks That Convert, Strategies That Scale.</div>
+    <div class="footer-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('services')">Services</a>
+      <a onclick="showPage('pricing')">Pricing</a>
+      <a onclick="showPage('training')">Training</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© Funky Clicks 2026. All rights reserved. | hello@funkyclicks.com | www.funkyclicks.com</div>
+  </footer>
+</div>
+
+<!-- ════════════════ SERVICES ════════════════ -->
+<div id="page-services" class="page">
+  <div class="services-header">
+    <div class="section-label" style="color:var(--pink-light);">What We Do</div>
+    <h1>Funky, Smart &amp; Results-Driven<br>Marketing Services</h1>
+    <p>We don't do cookie-cutter marketing. Every solution is tailored to your business, your goals, and your audience — with the expertise to back it up.</p>
+  </div>
+
+  <div class="service-block">
+    <div class="service-block-inner">
+      <div class="service-left">
+        <div class="service-icon"><i data-lucide="bar-chart-2"></i></div>
+        <h2>Marketing Consultancy &amp; Growth Strategy</h2>
+        <p class="tagline">Perfect for businesses that need a strategic roadmap for sustainable growth.</p>
+      </div>
+      <ul class="service-bullets">
+        <li><span class="dot"></span><div><strong>Marketing Audits &amp; Growth Strategy</strong><span>Deep-dive analysis of your marketing performance with tailored strategies to drive ROI.</span></div></li>
+        <li><span class="dot"></span><div><strong>Brand Positioning &amp; Messaging</strong><span>Stand out with a clear, compelling brand story that speaks directly to your audience.</span></div></li>
+        <li><span class="dot"></span><div><strong>Go-To-Market &amp; Campaign Planning</strong><span>We help you launch, scale, and optimise your marketing efforts at every stage.</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-block-inner">
+      <div class="service-left">
+        <div class="service-icon"><i data-lucide="megaphone"></i></div>
+        <h2>Social Media &amp; Performance Marketing</h2>
+        <p class="tagline">Great for businesses looking to increase brand awareness, engagement, and sales.</p>
+      </div>
+      <ul class="service-bullets">
+        <li><span class="dot"></span><div><strong>Paid Ads Management</strong><span>High-ROI campaigns across Google, Facebook, LinkedIn, TikTok and more — converting clicks into customers.</span></div></li>
+        <li><span class="dot"></span><div><strong>Organic Social Media Strategy &amp; Management</strong><span>Consistent, high-quality content that grows and engages your audience.</span></div></li>
+        <li><span class="dot"></span><div><strong>Influencer &amp; Community Marketing</strong><span>Collaborate with the right voices and build genuine brand loyalty through targeted engagement.</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-block-inner">
+      <div class="service-left">
+        <div class="service-icon"><i data-lucide="target"></i></div>
+        <h2>Sales Enablement &amp; Lead Generation</h2>
+        <p class="tagline">Ideal for businesses looking to shorten the sales cycle and increase revenue.</p>
+      </div>
+      <ul class="service-bullets">
+        <li><span class="dot"></span><div><strong>Sales Funnel Optimisation</strong><span>Turn interest into conversions with streamlined, high-converting customer journeys.</span></div></li>
+        <li><span class="dot"></span><div><strong>Lead Generation Campaigns</strong><span>We identify and attract high-value prospects through targeted outreach and smart marketing.</span></div></li>
+        <li><span class="dot"></span><div><strong>Sales &amp; Marketing Alignment</strong><span>Get your teams working together effectively to close more deals and drive more revenue.</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-block-inner">
+      <div class="service-left">
+        <div class="service-icon"><i data-lucide="pen-line"></i></div>
+        <h2>Copywriting &amp; Content Production</h2>
+        <p class="tagline">Ideal for businesses that need words that sell, educate, and engage.</p>
+      </div>
+      <ul class="service-bullets">
+        <li><span class="dot"></span><div><strong>Website &amp; Sales Copy</strong><span>Persuasive, conversion-driven copy that turns visitors into buyers.</span></div></li>
+        <li><span class="dot"></span><div><strong>Blog &amp; SEO Content</strong><span>Keyword-rich content that boosts your Google rankings and attracts organic traffic.</span></div></li>
+        <li><span class="dot"></span><div><strong>Email &amp; Lead Nurturing Campaigns</strong><span>Automated sequences that keep your audience engaged and ready to convert.</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-block-inner">
+      <div class="service-left">
+        <div class="service-icon"><i data-lucide="palette"></i></div>
+        <h2>Branding, Rebranding &amp; Design</h2>
+        <p class="tagline">Perfect for businesses launching or refreshing their brand to stay competitive.</p>
+      </div>
+      <ul class="service-bullets">
+        <li><span class="dot"></span><div><strong>Logo &amp; Visual Identity</strong><span>A unique, professional brand identity that sets you apart from the competition.</span></div></li>
+        <li><span class="dot"></span><div><strong>Brand Guidelines &amp; Messaging</strong><span>A cohesive look, feel, and voice that's recognisable and memorable across every touchpoint.</span></div></li>
+        <li><span class="dot"></span><div><strong>Rebranding Strategy</strong><span>Refresh your business image with a modern, strategic transformation that resonates.</span></div></li>
+        <li><span class="dot"></span><div><strong>Graphic Design</strong><span>Eye-catching visuals for ads, social media, and marketing materials that make an impact.</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-block-inner">
+      <div class="service-left">
+        <div class="service-icon"><i data-lucide="monitor"></i></div>
+        <h2>Website Development &amp; Optimisation</h2>
+        <p class="tagline">Best for businesses that need a website that works as hard as they do.</p>
+      </div>
+      <ul class="service-bullets">
+        <li><span class="dot"></span><div><strong>High-Performance Websites</strong><span>Built for speed, SEO, and conversions — not just to look good.</span></div></li>
+        <li><span class="dot"></span><div><strong>Landing Pages &amp; E-Commerce Solutions</strong><span>Designed to capture leads and increase sales from the moment visitors land.</span></div></li>
+        <li><span class="dot"></span><div><strong>UX &amp; Conversion Rate Optimisation (CRO)</strong><span>A seamless user experience engineered to drive action at every step.</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="service-block-inner">
+      <div class="service-left">
+        <div class="service-icon"><i data-lucide="mail"></i></div>
+        <h2>Email Marketing That Converts</h2>
+        <p class="tagline">No fluff. No wasted sends. Just smart, effective email marketing that works.</p>
+      </div>
+      <ul class="service-bullets">
+        <li><span class="dot"></span><div><strong>Email Campaign Strategy</strong><span>We map out the perfect approach for maximum impact at the right moment.</span></div></li>
+        <li><span class="dot"></span><div><strong>Compelling Copy &amp; Design</strong><span>Engaging, conversion-focused emails that stand out in crowded inboxes.</span></div></li>
+        <li><span class="dot"></span><div><strong>Automations &amp; Drip Sequences</strong><span>Seamless follow-ups that keep leads warm and move them toward conversion.</span></div></li>
+        <li><span class="dot"></span><div><strong>Performance Optimisation</strong><span>A/B testing, analytics, and continuous improvement for better results every send.</span></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="container">
+      <h2>Let's build your <em style="color:var(--pink-light);">growth engine</em>.</h2>
+      <p>Whether you need one service or the whole mix, we'll put together the right solution for your business — without a penny wasted.</p>
+      <a class="btn-primary" onclick="showPage('contact')">Book a Free Consultation</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="fc final transparent-02.png" alt="Funky Clicks"></div>
+    <div class="footer-tagline">Clicks That Convert, Strategies That Scale.</div>
+    <div class="footer-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('services')">Services</a>
+      <a onclick="showPage('pricing')">Pricing</a>
+      <a onclick="showPage('training')">Training</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© Funky Clicks 2026. All rights reserved. | hello@funkyclicks.com</div>
+  </footer>
+</div>
+
+<!-- ════════════════ PRICING ════════════════ -->
+<div id="page-pricing" class="page">
+  <div class="pricing-header">
+    <div class="section-label" style="color:var(--pink-light);">Transparent Pricing</div>
+    <h1>Funky Clicks Pricing Packages</h1>
+    <p>Results-driven marketing solutions designed to fit your business needs. Choose individual services, bundle for value, or talk to us about something bespoke.</p>
+  </div>
+
+  <div class="pricing-section">
+    <div class="container">
+      <div class="pricing-section-title">Monthly Retainers</div>
+      <div class="pricing-section-sub">Pick the services you need, or see our bundle deals below.</div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Content Creation</h3>
+          <div class="price">£1,800<span>/month</span></div>
+          <p class="desc">5-day focused content production — blogs, website copy, email sequences, ad copy.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>Keyword-optimised for SEO</li>
+            <li><span class="tick">✦</span>2 rounds of revisions included</li>
+            <li><span class="tick">✦</span>Tailored to your brand voice</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>Design Retainer</h3>
+          <div class="price">£2,000<span>/month</span></div>
+          <p class="desc">30 hours of custom design — social graphics, ads, brochures, presentations and more.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>Fast turnaround &amp; priority service</li>
+            <li><span class="tick">✦</span>Consistent brand across all assets</li>
+            <li><span class="tick">✦</span>No in-house team needed</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>Organic Social Media</h3>
+          <div class="price">£1,800<span>/month</span></div>
+          <p class="desc">Full management across 2 platforms — strategy, content, and community engagement.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>3–5 high-quality posts per week</li>
+            <li><span class="tick">✦</span>Community engagement &amp; growth</li>
+            <li><span class="tick">✦</span>Monthly performance reports</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>Email Marketing</h3>
+          <div class="price">£2,200<span>/month</span></div>
+          <p class="desc">Strategic, high-converting email campaigns designed to engage, nurture, and convert.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>4 custom emails per month</li>
+            <li><span class="tick">✦</span>Automated drip sequences</li>
+            <li><span class="tick">✦</span>A/B testing &amp; monthly reports</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>SEO Growth</h3>
+          <div class="price">£2,200<span>/month</span></div>
+          <p class="desc">Boost your Google rankings and attract consistent organic traffic month after month.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>Monthly SEO audit &amp; strategy</li>
+            <li><span class="tick">✦</span>2 keyword-optimised blog posts</li>
+            <li><span class="tick">✦</span>On-page improvements &amp; backlinks</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>Ads Management</h3>
+          <div class="price">£850<span>/month per channel</span></div>
+          <p class="desc">PPC &amp; paid social campaigns set up, optimised, and managed for maximum return.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>Campaign setup, targeting &amp; A/B testing</li>
+            <li><span class="tick">✦</span>Ongoing optimisation</li>
+            <li><span class="tick">✦</span>Ad spend not included</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>Sales Enablement</h3>
+          <div class="price">£2,500</div>
+          <p class="desc">Get your sales and marketing working in perfect harmony to close more deals.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>Funnel optimisation &amp; conversion tracking</li>
+            <li><span class="tick">✦</span>Lead scoring &amp; CRM integration</li>
+            <li><span class="tick">✦</span>Email &amp; nurture campaign strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-section" style="background:var(--off-white);">
+    <div class="container">
+      <div class="pricing-section-title">Bundle &amp; Save</div>
+      <div class="pricing-section-sub">Our most popular combinations — more value, seamless delivery.</div>
+      <div style="display:grid; gap:1.5rem;">
+        <div class="bundle-card">
+          <div class="featured-badge">Best Value</div>
+          <h3>The Funky Growth Bundle</h3>
+          <div class="price">£6,300<span style="font-size:1rem;color:rgba(255,255,255,0.6)">/month</span></div>
+          <p class="desc">Save £350 vs. buying individually. A cohesive content, design, social, and ads strategy that works seamlessly together.</p>
+          <ul class="bundle-includes">
+            <li><span class="tick">✦</span>5 Days Content Creation (£1,800)</li>
+            <li><span class="tick">✦</span>30hrs Design Services (£2,000)</li>
+            <li><span class="tick">✦</span>Organic Social Media (£1,800)</li>
+            <li><span class="tick">✦</span>Ads Management (£850+)</li>
+          </ul>
+        </div>
+        <div class="bundle-card" style="background:linear-gradient(135deg, #2d1050, #68389a);">
+          <div class="featured-badge" style="background:var(--purple-dark);">Full Funnel</div>
+          <h3>The Ultimate Scale-Up Package</h3>
+          <div class="price">£8,500<span style="font-size:1rem;color:rgba(255,255,255,0.6)">/month</span></div>
+          <p class="desc">For brands ready to grow big. A complete, full-funnel marketing system to drive traffic, leads, and conversions.</p>
+          <ul class="bundle-includes">
+            <li><span class="tick">✦</span>5 Days Content Creation (£1,800)</li>
+            <li><span class="tick">✦</span>Organic Social Media (£1,800)</li>
+            <li><span class="tick">✦</span>Paid Ads (£850+)</li>
+            <li><span class="tick">✦</span>SEO Growth Package (£2,200)</li>
+            <li><span class="tick">✦</span>30hrs Design Services (£2,000)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-section">
+    <div class="container">
+      <div class="pricing-section-title">Consultancy &amp; Advisory</div>
+      <div class="pricing-section-sub">Expert marketing guidance — at the level you need.</div>
+      <div class="consultancy-grid">
+        <div class="price-card">
+          <h3>Marketing Consultancy</h3>
+          <div class="price">£3,500</div>
+          <p class="desc">Strategy &amp; Advisory Support — expert direction without hiring a full-time CMO.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>Marketing Strategy Audit &amp; Roadmap</li>
+            <li><span class="tick">✦</span>Brand Positioning &amp; Messaging</li>
+            <li><span class="tick">✦</span>Campaign &amp; Go-To-Market Strategy</li>
+            <li><span class="tick">✦</span>2x 60-minute 1:1 strategy sessions</li>
+          </ul>
+        </div>
+        <div class="price-card featured">
+          <div class="featured-badge">Most Popular</div>
+          <h3>The Growth Accelerator</h3>
+          <div class="price">£6,500</div>
+          <p class="desc">Deep-Dive Consultancy &amp; Execution — hands-on expert guidance to accelerate growth.</p>
+          <ul class="price-includes">
+            <li><span class="tick">✦</span>Everything in Marketing Consultancy</li>
+            <li><span class="tick">✦</span>Competitor &amp; Market Research</li>
+            <li><span class="tick">✦</span>Funnel &amp; Customer Journey Optimisation</li>
+            <li><span class="tick">✦</span>Advisory on Paid &amp; Organic Marketing</li>
+            <li><span class="tick">✦</span>4x 60-minute 1:1 strategy sessions</li>
+          </ul>
+        </div>
+        <div class="support-card">
+          <h3>The Support System</h3>
+          <p>Need expert advice on demand? Get direct access to seasoned marketing professionals — without long-term commitments.</p>
+          <div class="rates">
+            <div class="rate-box">
+              <div class="rate-label">Hourly Rate</div>
+              <div class="rate-price">£160</div>
+              <div class="rate-note">Pay as you go</div>
+            </div>
+            <div class="rate-box">
+              <div class="rate-label">Day Rate</div>
+              <div class="rate-price">£650</div>
+              <div class="rate-note">Best for deep dives</div>
+            </div>
+          </div>
+          <p>Ask for advice, recommendations, or a second opinion on any marketing decision. Perfect when you need expert input without a retainer.</p>
+          <br>
+          <a class="btn-primary" onclick="showPage('contact')" style="display:inline-block; font-size:0.9rem; padding:0.7rem 1.8rem;">Book a Session</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-section" style="background:var(--off-white); text-align:center;">
+    <div class="container">
+      <div class="section-label">Bespoke</div>
+      <h2 class="section-title">Need something custom?</h2>
+      <p class="section-sub" style="margin:0 auto 2rem;">Every business is different. If none of these quite fit, let's talk — we'll build a package around your exact goals, budget, and timeline. No fluff, no pressure.</p>
+      <a class="btn-primary" onclick="showPage('contact')">Book a Free Consultation</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="fc final transparent-02.png" alt="Funky Clicks"></div>
+    <div class="footer-tagline">Clicks That Convert, Strategies That Scale.</div>
+    <div class="footer-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('services')">Services</a>
+      <a onclick="showPage('pricing')">Pricing</a>
+      <a onclick="showPage('training')">Training</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© Funky Clicks 2026. All rights reserved. | hello@funkyclicks.com</div>
+  </footer>
+</div>
+
+<!-- ════════════════ TRAINING ════════════════ -->
+<div id="page-training" class="page">
+  <div class="training-header">
+    <div class="section-label" style="color:var(--pink-light);">Funky Clicks Training</div>
+    <h1>Upskill. Empower. <em style="color:var(--pink-light);">Grow.</em></h1>
+    <div class="sub">Your team. Our expertise. Unstoppable results.</div>
+    <p>Want your team to level up their marketing game? At Funky Clicks, we don't just do marketing — we teach it. Our experts train your internal teams on the tools, strategies, and processes that drive real results, so you can own your marketing with confidence.</p>
+    <br>
+    <p style="color:rgba(255,255,255,0.6); font-size:0.95rem;">No boring lectures. No jargon overload. Just practical, hands-on training your team can apply immediately.</p>
+  </div>
+
+  <section style="background:var(--white); padding:4rem 2rem;">
+    <div class="container">
+      <div class="section-label">What We Teach</div>
+      <h2 class="section-title">Popular Training Courses</h2>
+      <p class="section-sub">Each course is tailored to your business, your tools, and your team's current skill level. Priced per attendee — with discounts for larger groups.</p>
+      <div class="training-courses">
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="bot"></i></div>
+          <h3>AI-Powered Marketing</h3>
+          <p>Learn how to leverage AI for content creation, SEO, email automation, paid ads, and data-driven decision-making — supercharge your marketing with the tools of tomorrow, today.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="smartphone"></i></div>
+          <h3>Social Media Mastery</h3>
+          <p>How to grow, engage, and convert on LinkedIn, Instagram, TikTok and beyond. Strategy, content planning, and community building — all in one session.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="search"></i></div>
+          <h3>SEO for Business</h3>
+          <p>The essentials of ranking on Google and driving organic traffic — from keyword research to on-page optimisation and link building, demystified.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="mail"></i></div>
+          <h3>Email Marketing That Works</h3>
+          <p>Writing, automation, and strategy for high-performing emails. Learn how to build sequences that nurture, engage, and convert on autopilot.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="target"></i></div>
+          <h3>Paid Ads Deep Dive</h3>
+          <p>How to run profitable PPC and social media ad campaigns. Audience targeting, bidding, creative, and measurement — everything your team needs to spend smart.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="pen-line"></i></div>
+          <h3>Content That Converts</h3>
+          <p>Writing blogs, landing pages, and social posts that drive action. Practical frameworks your team can use immediately to produce content that performs.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="users"></i></div>
+          <h3>CRM &amp; Sales Enablement</h3>
+          <p>How to use marketing automation tools for lead nurturing and sales alignment. Build workflows that keep your pipeline moving without manual effort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--off-white); padding:4rem 2rem;">
+    <div class="container">
+      <div class="section-label">The AI Deep Dive</div>
+      <h2 class="section-title">AI Marketing Training — <em>In Detail</em></h2>
+      <p class="section-sub">Our most in-demand course. We'll walk your team through real-world AI tools and workflows that save time, optimise performance, and drive better results.</p>
+      <div class="training-courses" style="margin-top:2rem;">
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="pen-line"></i></div>
+          <h3>AI for Content Creation</h3>
+          <p>Generate ideas, write compelling copy, and streamline your entire content production process — without losing your brand voice.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="search"></i></div>
+          <h3>AI-Powered SEO</h3>
+          <p>How AI tools can help with keyword research, on-page SEO, content optimisation, and climbing the Google rankings faster.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="mail"></i></div>
+          <h3>Smart Email Automation</h3>
+          <p>Personalise, optimise, and automate your emails for better engagement — using AI to send the right message at the right time.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="message-square"></i></div>
+          <h3>Chatbots &amp; Customer Engagement</h3>
+          <p>How AI can enhance customer interactions and lead nurturing 24/7 — without losing the human touch that builds trust.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="bar-chart-2"></i></div>
+          <h3>Data-Driven Marketing with AI</h3>
+          <p>Using AI analytics to track performance, spot opportunities, and make smarter marketing decisions based on real insight.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-icon"><i data-lucide="target"></i></div>
+          <h3>AI for Paid Ads</h3>
+          <p>Automate audience targeting, bidding strategies, and ad creative optimisation — so your budget works harder with less manual effort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--white); padding:4rem 2rem;">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:0.5rem;" class="section-label">How It Works</div>
+      <h2 class="section-title" style="text-align:center;">Flexible training,<br>built around <em>your team</em>.</h2>
+      <div class="how-it-works">
+        <div class="how-item">
+          <div class="how-icon"><i data-lucide="map-pin"></i></div>
+          <h4>In-Person or Virtual</h4>
+          <p>Choose what works best for your team — we'll come to you or deliver a seamless online session.</p>
+        </div>
+        <div class="how-item">
+          <div class="how-icon"><i data-lucide="clock"></i></div>
+          <h4>Flexible Formats</h4>
+          <p>Half-day, full-day, or multi-session programmes — we'll fit around your schedule, not the other way around.</p>
+        </div>
+        <div class="how-item">
+          <div class="how-icon"><i data-lucide="building-2"></i></div>
+          <h4>Tailored to Your Business</h4>
+          <p>Real-world examples and exercises drawn from your industry, your tools, and your specific challenges.</p>
+        </div>
+        <div class="how-item">
+          <div class="how-icon"><i data-lucide="zap"></i></div>
+          <h4>Immediately Actionable</h4>
+          <p>No theory for the sake of it. Every session gives your team skills they can apply from day one.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2.5rem; padding:2rem; background:var(--off-white); border-radius:16px; border:1px solid rgba(104,56,154,0.1);">
+        <p style="font-size:1.05rem; color:var(--text-muted); margin-bottom:0.5rem;">Priced per attendee. <strong style="color:var(--purple-dark);">Discounts available for larger groups.</strong></p>
+        <p style="font-size:0.9rem; color:var(--text-muted);">Get in touch to discuss your team's needs and we'll put together a custom training proposal.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="container">
+      <h2>Ready to train your team like <em style="color:var(--pink-light);">pros?</em></h2>
+      <p>Give your team the skills to take marketing to the next level — and the confidence to keep going when we step back.</p>
+      <a class="btn-primary" onclick="showPage('contact')">Book a Training Session</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="fc final transparent-02.png" alt="Funky Clicks"></div>
+    <div class="footer-tagline">Clicks That Convert, Strategies That Scale.</div>
+    <div class="footer-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('services')">Services</a>
+      <a onclick="showPage('pricing')">Pricing</a>
+      <a onclick="showPage('training')">Training</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© Funky Clicks 2026. All rights reserved. | hello@funkyclicks.com</div>
+  </footer>
+</div>
+
+<!-- ════════════════ CONTACT ════════════════ -->
+<div id="page-contact" class="page">
+  <div class="contact-header">
+    <div class="section-label" style="color:var(--pink-light);">Get in Touch</div>
+    <h1>Let's Talk.<br>No Hard Sell. <em style="color:var(--pink-light);">Promise.</em></h1>
+    <p>Whether you're ready to go or just exploring your options, we'd love to hear from you. Book a free consultation and let's see how we can help your business grow.</p>
+  </div>
+
+  <section style="padding:4rem 2rem;">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get in touch</h3>
+          <div class="contact-item">
+            <div class="contact-icon"><i data-lucide="mail"></i></div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:hello@funkyclicks.com">hello@funkyclicks.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i data-lucide="globe"></i></div>
+            <div>
+              <h4>Website</h4>
+              <a href="https://www.funkyclicks.com" target="_blank">www.funkyclicks.com</a>
+            </div>
+          </div>
+          <div style="background:var(--white); border-radius:16px; padding:1.75rem; border:1px solid rgba(104,56,154,0.1); margin-top:2rem;">
+            <h4 style="font-size:1rem; font-weight:800; color:var(--purple-dark); margin-bottom:0.75rem;">What to expect</h4>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem;">
+              <li style="display:flex;gap:0.75rem;font-size:0.9rem;color:var(--text-muted)"><span style="color:var(--pink);font-weight:900">✦</span>A friendly, no-pressure conversation</li>
+              <li style="display:flex;gap:0.75rem;font-size:0.9rem;color:var(--text-muted)"><span style="color:var(--pink);font-weight:900">✦</span>Honest advice on what would actually help</li>
+              <li style="display:flex;gap:0.75rem;font-size:0.9rem;color:var(--text-muted)"><span style="color:var(--pink);font-weight:900">✦</span>A clear idea of how we'd work together</li>
+              <li style="display:flex;gap:0.75rem;font-size:0.9rem;color:var(--text-muted)"><span style="color:var(--pink);font-weight:900">✦</span>No obligation, no hard sell — ever</li>
+            </ul>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="font-size:1.2rem; font-weight:800; color:var(--purple-dark); margin-bottom:1.5rem;">Book a Free Consultation</h3>
+          <div class="form-group">
+            <label>Your name</label>
+            <input type="text" placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label>Business name</label>
+            <input type="text" placeholder="Acme Ltd">
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <input type="email" placeholder="jane@acme.com">
+          </div>
+          <div class="form-group">
+            <label>What are you looking for?</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Marketing Consultancy</option>
+              <option>Lead Generation</option>
+              <option>Social Media Management</option>
+              <option>Website Development</option>
+              <option>Branding / Rebranding</option>
+              <option>Training</option>
+              <option>Pricing / Packages</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell us a bit about your business and goals</label>
+            <textarea placeholder="A quick overview of where you're at and what you're trying to achieve..."></textarea>
+          </div>
+          <button class="form-submit" onclick="handleSubmit()">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo"><img src="fc final transparent-02.png" alt="Funky Clicks"></div>
+    <div class="footer-tagline">Clicks That Convert, Strategies That Scale.</div>
+    <div class="footer-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('services')">Services</a>
+      <a onclick="showPage('pricing')">Pricing</a>
+      <a onclick="showPage('training')">Training</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-copy">© Funky Clicks 2026. All rights reserved. | hello@funkyclicks.com</div>
+  </footer>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+  const nl = document.getElementById('navLinks');
+  nl.classList.remove('open');
+}
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function handleSubmit() {
+  alert("Thanks for getting in touch! We'll be back with you shortly.");
+}
+lucide.createIcons();
+</script>
+</body>
+</html>
