@@ -2,6 +2,7 @@ import type { Block } from 'payload'
 
 export const PricingGridBlock: Block = {
   slug: 'pricingGrid',
+  imageURL: '/block-previews/pricing-grid.png',
   labels: { singular: 'Pricing Grid', plural: 'Pricing Grids' },
   fields: [
     { name: 'sectionTitle', type: 'text' },

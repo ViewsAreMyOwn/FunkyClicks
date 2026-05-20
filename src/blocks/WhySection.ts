@@ -2,6 +2,7 @@ import type { Block } from 'payload'
 
 export const WhySectionBlock: Block = {
   slug: 'whySection',
+  imageURL: '/block-previews/why-section.png',
   labels: { singular: 'Why Section', plural: 'Why Sections' },
   fields: [
     { name: 'label', type: 'text' },

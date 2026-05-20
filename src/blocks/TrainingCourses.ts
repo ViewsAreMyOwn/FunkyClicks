@@ -2,6 +2,7 @@ import type { Block } from 'payload'
 
 export const TrainingCoursesBlock: Block = {
   slug: 'trainingCourses',
+  imageURL: '/block-previews/training-courses.png',
   labels: { singular: 'Training Courses', plural: 'Training Courses' },
   fields: [
     { name: 'label', type: 'text' },

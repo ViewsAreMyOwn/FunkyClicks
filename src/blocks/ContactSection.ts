@@ -2,6 +2,7 @@ import type { Block } from 'payload'
 
 export const ContactSectionBlock: Block = {
   slug: 'contactSection',
+  imageURL: '/block-previews/contact-section.png',
   labels: { singular: 'Contact Section', plural: 'Contact Sections' },
   fields: [
     { name: 'email', type: 'email', defaultValue: 'hello@funkyclicks.com' },
