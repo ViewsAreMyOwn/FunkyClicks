@@ -4,6 +4,7 @@ export const HowItWorksBlock: Block = {
   slug: 'howItWorks',
   imageURL: '/block-previews/how-it-works.png',
   labels: { singular: 'How It Works', plural: 'How It Works' },
+  admin: { group: 'Content' },
   fields: [
     {
       name: 'items',

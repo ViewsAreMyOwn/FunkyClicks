@@ -4,6 +4,7 @@ export const ServicesOverviewBlock: Block = {
   slug: 'servicesOverview',
   imageURL: '/block-previews/services-overview.png',
   labels: { singular: 'Services Overview', plural: 'Services Overviews' },
+  admin: { group: 'Services' },
   fields: [
     { name: 'label', type: 'text' },
     { name: 'title', type: 'text' },

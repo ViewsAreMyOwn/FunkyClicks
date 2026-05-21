@@ -4,6 +4,7 @@ export const TrainingCoursesBlock: Block = {
   slug: 'trainingCourses',
   imageURL: '/block-previews/training-courses.png',
   labels: { singular: 'Training Courses', plural: 'Training Courses' },
+  admin: { group: 'Services' },
   fields: [
     { name: 'label', type: 'text' },
     { name: 'title', type: 'text' },

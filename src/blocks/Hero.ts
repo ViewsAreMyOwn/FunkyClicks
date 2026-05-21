@@ -4,6 +4,7 @@ export const HeroBlock: Block = {
   slug: 'hero',
   imageURL: '/block-previews/hero.png',
   labels: { singular: 'Hero Section', plural: 'Hero Sections' },
+  admin: { group: 'Layout' },
   fields: [
     { name: 'badge', type: 'text' },
     { name: 'title', type: 'text', required: true },

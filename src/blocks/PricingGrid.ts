@@ -4,6 +4,7 @@ export const PricingGridBlock: Block = {
   slug: 'pricingGrid',
   imageURL: '/block-previews/pricing-grid.png',
   labels: { singular: 'Pricing Grid', plural: 'Pricing Grids' },
+  admin: { group: 'Conversion' },
   fields: [
     { name: 'sectionTitle', type: 'text' },
     { name: 'sectionSubtitle', type: 'text' },

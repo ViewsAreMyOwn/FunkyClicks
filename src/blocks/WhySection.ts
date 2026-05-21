@@ -4,6 +4,7 @@ export const WhySectionBlock: Block = {
   slug: 'whySection',
   imageURL: '/block-previews/why-section.png',
   labels: { singular: 'Why Section', plural: 'Why Sections' },
+  admin: { group: 'Content' },
   fields: [
     { name: 'label', type: 'text' },
     { name: 'title', type: 'text' },
