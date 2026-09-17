@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 
 interface HeroBlockProps {
-  badge?: string
   title: string
   titleHighlight?: string
   tagline?: string
@@ -12,7 +11,6 @@ interface HeroBlockProps {
 }
 
 export default function HeroBlock({
-  badge,
   title,
   titleHighlight,
   tagline,
@@ -41,13 +39,6 @@ export default function HeroBlock({
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-40 pb-24">
-        {badge && (
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-8">
-            <span className="w-2 h-2 rounded-full bg-pink animate-pulse" />
-            <span className="text-sm font-semibold text-white/90">{badge}</span>
-          </div>
-        )}
-
         <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
           {title}
           {titleHighlight && (

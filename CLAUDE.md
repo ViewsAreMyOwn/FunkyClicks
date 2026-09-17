@@ -107,7 +107,7 @@ aws amplify get-job --app-id dew71fhoiulih --branch-name main --job-id <N>
 ### Pages collection
 - **slug**: `home` maps to `/`, all others map to `/<slug>`
 - **layout**: blocks field — the 10 blocks above compose each page
-- Seeded pages: `home`, `services`, `pricing`, `training`, `contact`
+- Seeded pages: `home`, `services`, `contact` (the seed deletes the retired `pricing` and `training` pages)
 
 ### Other collections
 - **Media**: file uploads, 5 MB limit

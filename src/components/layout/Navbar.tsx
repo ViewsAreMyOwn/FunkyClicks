@@ -9,8 +9,6 @@ import { Menu, X } from 'lucide-react'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/training', label: 'Training' },
 ]
 
 export default function Navbar() {
@@ -55,7 +53,7 @@ export default function Navbar() {
             href="/contact"
             className="bg-pink text-white font-extrabold px-6 py-2.5 rounded-full text-sm hover:bg-pink-light hover:-translate-y-0.5 hover:shadow-lg hover:shadow-pink/40 transition-all duration-300"
           >
-            Book a Call
+            Get in Touch
           </Link>
         </nav>
 
@@ -92,7 +90,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
             className="bg-pink text-white font-extrabold px-6 py-3 rounded-full text-base text-center hover:bg-pink-light transition-all duration-300 mt-2"
           >
-            Book a Call
+            Get in Touch
           </Link>
         </div>
       )}

@@ -1,22 +1,9 @@
-'use client'
-
 import { Mail, Globe } from 'lucide-react'
 
 interface ContactSectionBlockProps {
   email?: string
   website?: string
 }
-
-const services = [
-  'Social Media Management',
-  'SEO & Content Marketing',
-  'Paid Advertising (PPC)',
-  'Email Marketing',
-  'Marketing Consultancy',
-  'Training & Workshops',
-  'Brand Strategy',
-  'Other',
-]
 
 const whatToExpect = [
   'A friendly, no-pressure conversation',
@@ -29,16 +16,10 @@ export default function ContactSectionBlock({
   email = 'hello@funkyclicks.com',
   website = 'www.funkyclicks.com',
 }: ContactSectionBlockProps) {
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    alert("Thank you for your message! We'll be in touch shortly.")
-  }
-
   return (
     <section className="py-24 bg-off-white">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left side — contact info */}
+        <div className="max-w-3xl mx-auto">
           <div>
             <span className="inline-block text-pink font-bold text-sm uppercase tracking-widest mb-4">
               Get In Touch
@@ -93,70 +74,6 @@ export default function ContactSectionBlock({
                 ))}
               </ul>
             </div>
-          </div>
-
-          {/* Right side — form */}
-          <div className="bg-white rounded-2xl border border-purple/20 p-8 shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-bold text-fc-text mb-2">Your Name *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Jane Smith"
-                    className="w-full border border-purple/20 rounded-xl px-4 py-3 text-fc-text placeholder:text-fc-muted/50 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-fc-text mb-2">Business Name</label>
-                  <input
-                    type="text"
-                    placeholder="Acme Ltd"
-                    className="w-full border border-purple/20 rounded-xl px-4 py-3 text-fc-text placeholder:text-fc-muted/50 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold text-fc-text mb-2">Email Address *</label>
-                <input
-                  type="email"
-                  required
-                  placeholder="jane@example.com"
-                  className="w-full border border-purple/20 rounded-xl px-4 py-3 text-fc-text placeholder:text-fc-muted/50 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold text-fc-text mb-2">Service You&apos;re Interested In</label>
-                <select className="w-full border border-purple/20 rounded-xl px-4 py-3 text-fc-text focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all appearance-none bg-white">
-                  <option value="">Select a service...</option>
-                  {services.map((s) => (
-                    <option key={s} value={s}>
-                      {s}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold text-fc-text mb-2">Your Message *</label>
-                <textarea
-                  required
-                  rows={5}
-                  placeholder="Tell us a bit about your business and what you're looking for..."
-                  className="w-full border border-purple/20 rounded-xl px-4 py-3 text-fc-text placeholder:text-fc-muted/50 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-all resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-pink text-white font-extrabold py-4 px-8 rounded-full text-lg hover:bg-pink-light hover:-translate-y-0.5 hover:shadow-xl hover:shadow-pink/40 transition-all duration-300"
-              >
-                Send Message
-              </button>
-            </form>
           </div>
         </div>
       </div>

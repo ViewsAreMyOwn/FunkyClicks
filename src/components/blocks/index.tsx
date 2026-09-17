@@ -17,7 +17,6 @@ export function BlockRenderer({ block, index }: { block: any; index: number }) {
     case 'hero':
       return (
         <HeroBlock
-          badge={block.badge}
           title={block.title}
           titleHighlight={block.titleHighlight}
           tagline={block.tagline}

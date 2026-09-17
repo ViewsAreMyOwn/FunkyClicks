@@ -32,7 +32,7 @@ export const Pages: CollectionConfig = {
       required: true,
       unique: true,
       admin: {
-        description: 'Use "home" for the homepage. Other pages: services, pricing, training, contact',
+        description: 'Use "home" for the homepage. Other pages: services, contact',
       },
     },
     {

@@ -6,7 +6,8 @@ export const HeroBlock: Block = {
   labels: { singular: 'Hero Section', plural: 'Hero Sections' },
   admin: { group: 'Layout' },
   fields: [
-    { name: 'badge', type: 'text' },
+    // Eyebrow removed from the design; field kept hidden so the schema push doesn't drop the column
+    { name: 'badge', type: 'text', admin: { hidden: true } },
     { name: 'title', type: 'text', required: true },
     { name: 'titleHighlight', type: 'text', admin: { description: 'Text inside the title shown in pink' } },
     { name: 'tagline', type: 'text' },
