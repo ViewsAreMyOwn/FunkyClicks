@@ -40,7 +40,7 @@ const consultancyCards = [
   {
     title: 'The Growth Accelerator',
     description:
-      'Our most popular package — a complete, done-for-you marketing solution for ambitious SMEs ready to scale.',
+      'Our most popular package. A complete, done-for-you marketing solution for ambitious SMEs ready to scale.',
     price: 'From £1,500',
     priceSuffix: '/ month',
     badge: 'Most Popular',
@@ -58,7 +58,7 @@ const consultancyCards = [
   {
     title: 'The Support System',
     description:
-      "Flexible, on-demand marketing support — dip in when you need it, pause when you don't.",
+      "Flexible, on-demand marketing support. Dip in when you need it, pause when you don't.",
     price: '£150 / hr',
     priceSuffix: 'or £900 / day',
     includes: [

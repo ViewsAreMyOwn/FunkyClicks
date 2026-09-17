@@ -25,7 +25,7 @@ const payload = await getPayload({ config })
 async function upsertPage(slug: string, title: string, layout: unknown[]) {
   const existing = await payload.find({ collection: 'pages', where: { slug: { equals: slug } }, limit: 1 })
   if (existing.docs.length > 0) {
-    console.log(`[Seed] Skipping "${slug}" — already exists`)
+    console.log(`[Seed] Skipping "${slug}" (already exists)`)
     return
   }
   await payload.create({ collection: 'pages', data: { title, slug, layout } as never })
@@ -55,14 +55,14 @@ await upsertPage('home', 'Home', [
     label: 'Why Funky Clicks',
     title: 'Marketing that works. Without the agency overhead.',
     description:
-      "We act as an extension of your team — giving you expertise exactly where and when you need it. No upselling, no fluff. Just the right strategies to get you where you need to go. And when you're ready to take the reins? We'll set you up for success and happily step back. No pressure. Just great marketing that works. But trust us — you won't want to leave.",
+      "We act as an extension of your team, giving you expertise exactly where and when you need it. No upselling, no fluff. Just the right strategies to get you where you need to go. And when you're ready to take the reins? We'll set you up for success and happily step back. No pressure. Just great marketing that works. But trust us: you won't want to leave.",
     showStats: true,
     cards: [
       {
         icon: 'Target',
         title: 'Strategy-First Thinking',
         description:
-          "Every decision starts with your business goals. We don't run campaigns for the sake of it — we build strategies that drive real, measurable outcomes.",
+          "Every decision starts with your business goals. We don't run campaigns for the sake of it. We build strategies that drive real, measurable outcomes.",
       },
       {
         icon: 'TrendingUp',
@@ -74,19 +74,19 @@ await upsertPage('home', 'Home', [
         icon: 'Bot',
         title: 'AI-Powered Marketing',
         description:
-          "We use AI to supercharge your marketing — and we'll train your team to use it too, so when you say goodbye to us, you're prepared and ready to go.",
+          "We use AI to supercharge your marketing, and we'll train your team to use it too, so when you say goodbye to us, you're prepared and ready to go.",
       },
       {
         icon: 'Monitor',
         title: 'Websites That Sell',
         description:
-          "We build high-performance websites designed to convert. Speed, SEO, and user experience — every element engineered to drive business results.",
+          "We build high-performance websites designed to convert. Speed, SEO, and user experience, with every element engineered to drive business results.",
       },
       {
         icon: 'Zap',
         title: 'Flexible & Scalable',
         description:
-          "Need a sprint or a long-term partner? We scale up or down to match exactly what your business needs — without locking you into unnecessary spend.",
+          "Need a sprint or a long-term partner? We scale up or down to match exactly what your business needs, without locking you into unnecessary spend.",
       },
       {
         icon: 'Users',
@@ -101,7 +101,7 @@ await upsertPage('home', 'Home', [
     label: 'What We Do',
     title: 'Everything your business needs to grow and thrive.',
     description:
-      'From strategy to execution, we cover the full marketing mix — bringing in the right expertise for every project.',
+      'From strategy to execution, we cover the full marketing mix, bringing in the right expertise for every project.',
     cards: [
       {
         icon: 'BarChart2',
@@ -124,7 +124,7 @@ await upsertPage('home', 'Home', [
       {
         icon: 'PenLine',
         title: 'Copywriting & Content',
-        description: 'Website copy, SEO content, email sequences — words that sell.',
+        description: 'Website copy, SEO content, email sequences. Words that sell.',
         linkSlug: 'services',
       },
       {
@@ -159,7 +159,7 @@ await upsertPage('services', 'Services', [
     label: 'What We Do',
     title: 'Funky, Smart & Results-Driven Marketing Services',
     description:
-      "We don't do cookie-cutter marketing. Every solution is tailored to your business, your goals, and your audience — with the expertise to back it up.",
+      "We don't do cookie-cutter marketing. Every solution is tailored to your business, your goals, and your audience, with the expertise to back it up.",
   },
   {
     blockType: 'serviceDetail',
@@ -192,7 +192,7 @@ await upsertPage('services', 'Services', [
       {
         title: 'Paid Ads Management',
         description:
-          'High-ROI campaigns across Google, Facebook, LinkedIn, TikTok and more — converting clicks into customers.',
+          'High-ROI campaigns across Google, Facebook, LinkedIn, TikTok and more, converting clicks into customers.',
       },
       {
         title: 'Organic Social Media Strategy & Management',
@@ -286,7 +286,7 @@ await upsertPage('services', 'Services', [
     bullets: [
       {
         title: 'High-Performance Websites',
-        description: 'Built for speed, SEO, and conversions — not just to look good.',
+        description: 'Built for speed, SEO, and conversions, not just to look good.',
       },
       {
         title: 'Landing Pages & E-Commerce Solutions',
@@ -328,7 +328,7 @@ await upsertPage('services', 'Services', [
     title: "Let's build your",
     titleHighlight: 'growth engine.',
     description:
-      "Whether you need one service or the whole mix, we'll put together the right solution for your business — without a penny wasted.",
+      "Whether you need one service or the whole mix, we'll put together the right solution for your business, without a penny wasted.",
     ctaLabel: 'Book a Free Consultation',
     ctaSlug: 'contact',
   },

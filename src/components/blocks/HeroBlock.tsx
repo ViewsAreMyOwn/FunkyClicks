@@ -38,7 +38,7 @@ export default function HeroBlock({
       <div className="absolute bottom-1/4 left-1/3 w-80 h-80 rounded-full bg-lavender/20 blur-3xl animate-blob animation-delay-4000" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-40 pb-24">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center pt-24 md:pt-28 pb-24">
         <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
           {title}
           {titleHighlight && (

@@ -29,7 +29,7 @@ export default function ContactSectionBlock({
             </h2>
             <p className="text-fc-muted text-lg leading-relaxed mb-10">
               Whether you&apos;re ready to dive in or just want a chat about your marketing, we&apos;d love to hear
-              from you. No hard sell, no waffle — just honest, helpful conversation.
+              from you. No hard sell, no waffle. Just honest, helpful conversation.
             </p>
 
             <div className="space-y-5 mb-10">
